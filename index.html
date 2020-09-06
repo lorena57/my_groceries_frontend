@@ -8,7 +8,35 @@
 </head>
 <body>
     
+    <div class="form-container">
+        <form id="create-grocery-form">
+            <h3>Create a grocery list</h3>
 
+            <select name="markets" id="markets">
+                <option value="">--Please choose a market--</option>
+                <option value="1">SafeWay</option>
+                <option value="2">Whole Foods</option>
+                <option value="3">New Seasons</option>
+            </select>
+
+            <br><br>
+                <input type="text" id="input-grocery-item" placeholder="Grocery Item">
+                <br><br>
+                <input type="text" id="input-qty" placeholder="Qty">
+                <br><br>
+                <textarea name="notes" id="input-notes" cols="30" rows="10" placeholder="Notes"></textarea>
+            <br><br>
+
+            <input type="submit" id="create-button" name="submit" value="Create a grocery list">
+
+        </form>
+
+    </div>
+
+
+
+
+    
     <!-- grocery-container will render all my data from my fetch -->
     <div id="grocery-container">
 
