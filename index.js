@@ -60,16 +60,18 @@ function postFetch(market_id, groceryItem, qty, notes) {
     })
     .then(response => response.json())
     .then(grocery => { 
-        const groceryData = grocery.data.attributes
-        const groceryMarkUp = `
-        <div data-id=${grocery.id}>
-            <h3>${groceryData.market.name}</h3>
-            <p>${grocery.groceryItem}</p>
-            <p>${grocery.qty}</p>
-            <p>${grocery.notes}</p>
-            <button data-id=${groceryData.id}>Edit</button>
-        </div>
-        `;
-        document.querySelector('#grocery-container').innerHTML +=groceryMarkUp
+        console.log(grocery)
+        const groceryData = grocery.data
+        render(groceryData)
+        // const groceryMarkUp = `
+        // <div data-id=${grocery.id}>
+        //     <h3>${groceryData.market.name}</h3>
+        //     <p>${grocery.groceryItem}</p>
+        //     <p>${grocery.qty}</p>
+        //     <p>${grocery.notes}</p>
+        //     <button data-id=${groceryData.id}>Edit</button>
+        // </div>
+        // `;
+        // document.querySelector('#grocery-container').innerHTML +=groceryMarkUp
     })
 }
