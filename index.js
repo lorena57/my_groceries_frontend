@@ -36,9 +36,6 @@ function render(grocery) {
     document.querySelector('#grocery-container').innerHTML += groceryMarkup
 }
 
-
-
-
 // function grabs all the values for the inputs on the form
 function createFormHandler(e) {
     e.preventDefault()
@@ -62,6 +59,7 @@ function postFetch(market_id, groceryItem, qty, notes) {
     .then(grocery => { 
         console.log(grocery)
         const groceryData = grocery.data
+        debugger
         render(groceryData)
         // const groceryMarkUp = `
         // <div data-id=${grocery.id}>
