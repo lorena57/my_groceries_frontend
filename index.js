@@ -12,13 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
    
 })
 
-
 function getGroceries() {
     fetch(baseUrl)
     .then(response => response.json())
     .then(grocery => {
-    grocery.data.forEach(grocery => {
-        const groceryMarkup = `
+        grocery.data.forEach(grocery => {
+        render(grocery)
+        })
+    })
+}
+
+function render(grocery) {
+    const groceryMarkup = `
         <div data-id=${grocery.id}>
         <h3>${grocery.attributes.market.name}<h3>
         <p>${grocery.attributes.groceryItem}</p>
@@ -28,10 +33,11 @@ function getGroceries() {
         </div>
         <br><br>`;
 
-        document.querySelector('#grocery-container').innerHTML +=groceryMarkup
-    })
-    })
+    document.querySelector('#grocery-container').innerHTML += groceryMarkup
 }
+
+
+
 
 // function grabs all the values for the inputs on the form
 function createFormHandler(e) {
