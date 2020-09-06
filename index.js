@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("I'm still here")
 
     getGroceries()
+
+    const createGroceryForm = document.querySelector("#create-grocery-form")
+
+    createGroceryForm.addEventListener("submit", (e) =>
+    createFormHandler(e))
    
 })
 
@@ -26,6 +31,15 @@ function getGroceries() {
         document.querySelector('#grocery-container').innerHTML +=groceryMarkup
     })
     })
+}
+
+// function grabs all the values for the inputs on the form
+function createFormHandler(e) {
+    e.preventDefault()
+    const marketId = parseInt(document.querySelector("#markets").value)
+    const groceryItemInput = document.querySelector("#input-grocery-item").value
+    const qtyInput = document.querySelector("#input-qty").value
+    const notesInput = document.querySelector("#input-notes").value
 }
 
 
