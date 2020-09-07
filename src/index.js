@@ -1,7 +1,7 @@
 const baseUrl = "http://localhost:3000/api/v1/groceries"
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("I'm still here")
+    console.log("I'm still here in index.js")
 
     getGroceries()
 
@@ -17,6 +17,8 @@ function getGroceries() {
     .then(response => response.json())
     .then(grocery => {
         grocery.data.forEach(grocery => {
+
+            let newGrocery = new Grocery(grocery, grocery.attributes)
         render(grocery)
         })
     })
@@ -59,7 +61,7 @@ function postFetch(market_id, groceryItem, qty, notes) {
     .then(grocery => { 
         console.log(grocery)
         const groceryData = grocery.data
-        debugger
+        
         render(groceryData)
         // const groceryMarkUp = `
         // <div data-id=${grocery.id}>
