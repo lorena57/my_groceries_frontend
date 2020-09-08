@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     createFormHandler(e))
 })
 
+
+
     function getGroceries() {
         fetch(baseUrl)
         .then(response => response.json())
@@ -31,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         postFetch(marketId, groceryItemInput, qtyInput, notesInput)
     }
 
+
+    
     function postFetch(market_id, groceryItem, qty, notes) {
 
         const bodyData = {market_id, groceryItem, qty, notes}

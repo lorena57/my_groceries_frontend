@@ -11,6 +11,7 @@ class Grocery {
         Grocery.all.push(this)
     }
 
+
     render() {
         return `
         <div data-id=${this.id}>
@@ -23,9 +24,6 @@ class Grocery {
         <br><br>`;
 
     }
-
-
-
 
 
 }
