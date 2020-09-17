@@ -5,9 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     getGroceries()
 
     const createGroceryForm = document.querySelector("#create-grocery-form")
+    const groceryContainer = document.querySelector("#grocery-container")
 
     createGroceryForm.addEventListener("submit", (e) =>
     createFormHandler(e))
+
+    groceryContainer.addEventListener("click", (e) => {
+        const groceryId = e.target.dataset.id
+        if (e.target.id == 'delete-btn') {
+            deleteGrocery(groceryId)
+        }
+        
+    })
+
+
+
 })
 
 
@@ -31,10 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const qtyInput = document.querySelector('#input-qty').value
         const notesInput = document.querySelector('#input-notes').value
         postFetch(marketId, groceryItemInput, qtyInput, notesInput)
+
+        clearValues()
     }
 
+    function clearValues() {
+        const marketId = parseInt(document.querySelector('#markets').value = "")
+        const groceryItemInput = document.querySelector('#input-grocery-item').value = "";
+        const qtyInput = document.querySelector('#input-qty').value = "";
+        const notesInput = document.querySelector('#input-notes').value = "";
+        
+    }
 
-    
     function postFetch(market_id, groceryItem, qty, notes) {
 
         const bodyData = {market_id, groceryItem, qty, notes}
@@ -50,6 +70,51 @@ document.addEventListener('DOMContentLoaded', () => {
             const groceryData = grocery.data
             
             let newGrocery = new Grocery(groceryData, groceryData.attributes)
+            
             document.querySelector("#grocery-container").innerHTML += newGrocery.render()
         })
     }
+
+    
+
+function deleteGrocery(id) {
+debugger
+    fetch(`http://localhost:3000/api/v1/groceries/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+ 
+    })
+        .then(response => response.json())
+        .then(grocery => {
+
+            // console.log(grocery)
+            Grocery.all = []
+            getGroceries()
+        })
+
+
+
+}
+
+// function deleteGrocery(id) {
+
+    //     let deleteObject = {
+    //         method: "DELETE",
+    //         headers: {"Content-Type": "application/json"}
+    //     }
+
+    //     fetch(`http://localhost:3000/api/v1/groceries/${id}`, deleteObject)
+    //     .then(response => response.json())
+    //     .then(grocery => {
+
+    //         console.log(grocery)
+    //         Grocery.all =[]
+    //         getGroceries()
+    //     })
+
+
+
+    // }
+
+
+

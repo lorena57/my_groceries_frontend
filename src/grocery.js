@@ -19,7 +19,7 @@ class Grocery {
         <p>${this.groceryItem}</p>
         <p>${this.qty}</p>
         <p>${this.notes}</p>
-        <button data.id=${this.id}>Edit</button>
+        <button id="delete-btn" data-id=${this.id}>delete</button>
         </div>
         <br><br>`;
 
