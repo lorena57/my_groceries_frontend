@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(baseUrl)
         .then(response => response.json())
         .then(grocery => {
+            //clears out the div 
+            document.querySelector("#grocery-container").innerHTML =""
             grocery.data.forEach(grocery => {
                 let newGrocery = new Grocery(grocery, grocery.attributes)
                 document.querySelector("#grocery-container").innerHTML += newGrocery.render()
@@ -52,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const groceryItemInput = document.querySelector('#input-grocery-item').value = "";
         const qtyInput = document.querySelector('#input-qty').value = "";
         const notesInput = document.querySelector('#input-notes').value = "";
-        
     }
 
     function postFetch(market_id, groceryItem, qty, notes) {
@@ -78,11 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
 function deleteGrocery(id) {
-debugger
+
     fetch(`http://localhost:3000/api/v1/groceries/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
- 
     })
         .then(response => response.json())
         .then(grocery => {
@@ -90,31 +90,15 @@ debugger
             // console.log(grocery)
             Grocery.all = []
             getGroceries()
+            
         })
 
 
 
 }
 
-// function deleteGrocery(id) {
-
-    //     let deleteObject = {
-    //         method: "DELETE",
-    //         headers: {"Content-Type": "application/json"}
-    //     }
-
-    //     fetch(`http://localhost:3000/api/v1/groceries/${id}`, deleteObject)
-    //     .then(response => response.json())
-    //     .then(grocery => {
-
-    //         console.log(grocery)
-    //         Grocery.all =[]
-    //         getGroceries()
-    //     })
 
 
-
-    // }
 
 
 
