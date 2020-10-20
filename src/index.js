@@ -10,19 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
     createGroceryForm.addEventListener("submit", (e) =>
     createFormHandler(e))
 
+    const sortBtn = document.getElementById('sort-button')
+
+    sortBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        sortGroceries()
+    })
+
     groceryContainer.addEventListener("click", (e) => {
         const groceryId = e.target.dataset.id
         if (e.target.id == 'delete-btn') {
             deleteGrocery(groceryId)
         }
-        
     })
 
 
+   
+
 
 })
-
-
 
     function getGroceries() {
         fetch(baseUrl)
@@ -45,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const qtyInput = document.querySelector('#input-qty').value
         const notesInput = document.querySelector('#input-notes').value
         postFetch(marketId, groceryItemInput, qtyInput, notesInput)
-
         clearValues()
     }
 
@@ -57,9 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function postFetch(market_id, groceryItem, qty, notes) {
-
         const bodyData = {market_id, groceryItem, qty, notes}
-        
         fetch(baseUrl, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -69,23 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(grocery => { 
             console.log(grocery)
             const groceryData = grocery.data
-            
             let newGrocery = new Grocery(groceryData, groceryData.attributes)
-            
             document.querySelector("#grocery-container").innerHTML += newGrocery.render()
         })
     }
 
-    
 
-function deleteGrocery(id) {
-
-    fetch(`http://localhost:3000/api/v1/groceries/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-    })
+    function sortGroceries() {
+        document.querySelector('#grocery-container').innerHTML = ''
+        fetch(baseUrl)
         .then(response => response.json())
-        .then(grocery => {
+        .then(groceries => {
+            const grocerylist = Grocery.sortGroceries(groceries.data)
+            groceries.data.forEach(grocery => {
+                let findGrocery = Grocery.findById(grocery.id)
+                let newItem = new Grocery(grocery, grocery.attributes)
+                document.querySelector('#grocery-container').innerHTML +=newItem.render()
+            })
+        })
+    }
+
+    function deleteGrocery(id) {
+        fetch(`http://localhost:3000/api/v1/groceries/${id}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+    })
+            .then(response => response.json())
+            .then(grocery => {
 
             // console.log(grocery)
             Grocery.all = []
@@ -95,7 +108,7 @@ function deleteGrocery(id) {
 
 
 
-}
+    }
 
 
 

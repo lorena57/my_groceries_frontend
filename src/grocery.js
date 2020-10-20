@@ -25,6 +25,17 @@ class Grocery {
 
     }
 
+    static findById(id) {
+        return this.all.find(grocery => grocery.id == id)
+    }
+
+    static sortGroceries(groceries) {
+        
+        const sortedItems = groceries.sort((first, second) => first.attributes.groceryItem.toUpperCase() > second.attributes.groceryItem.toUpperCase() ? 1:-1
+        )
+        return sortedItems
+    }
+
 
 }
 
