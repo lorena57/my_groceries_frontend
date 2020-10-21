@@ -30,8 +30,7 @@ class Grocery {
     }
 
     static sortGroceries(groceries) {
-        
-        const sortedItems = groceries.sort((first, second) => first.attributes.groceryItem.toUpperCase() > second.attributes.groceryItem.toUpperCase() ? 1:-1
+        const sortedItems = groceries.sort((first, second) => first.attributes.groceryItem.toUpperCase() > second.attributes.groceryItem.toUpperCase() ? 1 : - 1
         )
         return sortedItems
     }

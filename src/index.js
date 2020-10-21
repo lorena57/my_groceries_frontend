@@ -24,10 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-
-   
-
-
 })
 
     function getGroceries() {
@@ -55,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearValues() {
-        const marketId = parseInt(document.querySelector('#markets').value = "")
+        const marketId = document.querySelector('#markets').value = "";
         const groceryItemInput = document.querySelector('#input-grocery-item').value = "";
         const qtyInput = document.querySelector('#input-qty').value = "";
         const notesInput = document.querySelector('#input-notes').value = "";
