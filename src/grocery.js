@@ -26,12 +26,12 @@ class Grocery {
     }
 
     //static method finds object by ID
-    //static methods are only called on the class itself
-    //to call a static method .this is used 
+
     static findById(id) {
         return this.all.find(grocery => grocery.id == id)
     }
 
+    //static method to sort grocery object 
     static sortGroceries(groceries) {
         const sortedItems = groceries.sort((first, second) => first.attributes.groceryItem.toUpperCase() > second.attributes.groceryItem.toUpperCase() ? 1 : - 1
         )
