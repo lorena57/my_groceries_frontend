@@ -25,15 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 })
-
+//function clears out the input field and then renders grocery objects
     function getGroceries() {
         fetch(baseUrl)
         .then(response => response.json())
         .then(grocery => {
             //clears out the div 
             document.querySelector("#grocery-container").innerHTML =""
+            //grocery.data.forEach iterates through the array 
             grocery.data.forEach(grocery => {
                 let newGrocery = new Grocery(grocery, grocery.attributes)
+                //The data is the rendered into the div element
                 document.querySelector("#grocery-container").innerHTML += newGrocery.render()
             })
         })
@@ -50,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearValues()
     }
 
+    //function clears the values once object is submitted
     function clearValues() {
         const marketId = document.querySelector('#markets').value = "";
         const groceryItemInput = document.querySelector('#input-grocery-item').value = "";
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const notesInput = document.querySelector('#input-notes').value = "";
     }
 
+    //function post grocery object created and renders object
     function postFetch(market_id, groceryItem, qty, notes) {
         const bodyData = {market_id, groceryItem, qty, notes}
         fetch(baseUrl, {
@@ -73,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-
+    //function iterates through object ID and grocery attributes and renders
     function sortGroceries() {
         document.querySelector('#grocery-container').innerHTML = ''
         fetch(baseUrl)
@@ -87,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
-
+    //function deletes grocery object 
     function deleteGrocery(id) {
         fetch(`http://localhost:3000/api/v1/groceries/${id}`, {
             method: "DELETE",
@@ -99,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log(grocery)
             Grocery.all = []
             getGroceries()
-            
         })
 
 

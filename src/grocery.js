@@ -25,6 +25,9 @@ class Grocery {
 
     }
 
+    //static method finds object by ID
+    //static methods are only called on the class itself
+    //to call a static method .this is used 
     static findById(id) {
         return this.all.find(grocery => grocery.id == id)
     }
