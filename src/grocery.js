@@ -11,7 +11,7 @@ class Grocery {
         Grocery.all.push(this)
     }
 
-
+//How does name render id .name is not part of the class
     render() {
         return `
         <div data-id=${this.id}>
@@ -26,7 +26,6 @@ class Grocery {
     }
 
     //static method finds object by ID
-
     static findById(id) {
         return this.all.find(grocery => grocery.id == id)
     }
@@ -37,6 +36,10 @@ class Grocery {
         )
         return sortedItems
     }
+
+    
+
+   
 
 
 }

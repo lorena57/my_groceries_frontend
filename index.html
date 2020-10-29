@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+   }
+   .fa {
+      font-size: 50px;
+      cursor: pointer;
+      user-select: none;
+   }
+   .fa-thumbs-up {
+      color: blue;
+   }
+   .fa-thumbs-down {
+      color: red;
+   }
+   .fa:hover {
+      transform: scale(1.2);
+   }
+
+    </style>
     <script type="text/javascript" src="src/grocery.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
     
@@ -30,15 +53,19 @@
             <br><br>
 
             <input type="submit" id="create-button" name="submit" value="Create a grocery list">
+            
+            <!-- <input type="submit" id="add-feature" name="submit" value="Favorite"> -->
+            <span id="thisone">0</span>
+            <i class="fa fa-thumbs-up"></i>
+
+            <button id="fave-grocery" type="submit">Favorite Grocery</button>
 
         </form>
 
     </div>
+   
     <br>
         <input id='sort-button' type="submit" name="submit" value="Sort Items" class="submit">
-
-
-  
 
 
     <!-- grocery-container will render all my data from my fetch -->

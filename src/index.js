@@ -2,13 +2,20 @@ const baseUrl = "http://localhost:3000/api/v1/groceries"
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    document.querySelector(".fa").addEventListener("click", function (event) {
+        toggleLike(event);
+    });
+    function toggleLike(ele) {
+        ele.target.classList.toggle("fa-thumbs-down");
+    }
+
     getGroceries()
+    // forAlice()
 
     const createGroceryForm = document.querySelector("#create-grocery-form")
     const groceryContainer = document.querySelector("#grocery-container")
 
-    createGroceryForm.addEventListener("submit", (e) =>
-    createFormHandler(e))
+    createGroceryForm.addEventListener("submit", (e) => createFormHandler(e))
 
     const sortBtn = document.getElementById('sort-button')
 
@@ -17,7 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sortGroceries()
     })
 
-    groceryContainer.addEventListener("click", (e) => {
+    const addOne = document.querySelector('#fave-grocery')
+
+    addOne.addEventListener('click', (e) => {
+        addone()
+    });
+
+
+    groceryContainer.addEventListener("click", (e) => { 
         const groceryId = e.target.dataset.id
         if (e.target.id == 'delete-btn') {
             deleteGrocery(groceryId)
@@ -43,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // function grabs all the values for the inputs on the form
     function createFormHandler(e) {
+        // console.log(new FormData(e.target))
         e.preventDefault()
         const marketId = parseInt(document.querySelector('#markets').value)
         const groceryItemInput = document.querySelector('#input-grocery-item').value
@@ -109,8 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+// function forAlice(){
+//     // document.querySelector('#grocery-container').innerHTML = ''
+//     fetch(baseUrl)
+//     .then(response => response.json())
+//     .then(groceries => {
+//         const grocerylist = Grocery.forAlice(groceries.data)
+//         groceries.data.forEach(grocery => {
+//             let findGrocery = Grocery.findById(grocery.id)
+//             let newItem = new Grocery(grocery, grocery.attributes)
+//             document.querySelector('#grocery-container').innerHTML += newItem.render()
+//         })
+//     })
+    
+// }
 
-
-
+function addone(){
+    let faveItem = document.getElementById('thisone').innerHTML
+    faveItem++;
+    document.getElementById('thisone').innerHTML = faveItem;
+}
 
 
