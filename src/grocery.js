@@ -20,10 +20,14 @@ class Grocery {
         <p>${this.qty}</p>
         <p>${this.notes}</p>
         <button id="delete-btn" data-id=${this.id}>delete</button>
+
         </div>
+
         <br><br>`;
 
     }
+    
+
 
     //static method finds object by ID
     static findById(id) {
@@ -37,11 +41,11 @@ class Grocery {
         return sortedItems
     }
 
-    
-
-   
-
-
 }
+
+
+
+
+
 
 Grocery.all = [];

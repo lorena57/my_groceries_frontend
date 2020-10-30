@@ -2,15 +2,11 @@ const baseUrl = "http://localhost:3000/api/v1/groceries"
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.querySelector(".fa").addEventListener("click", function (event) {
-        toggleLike(event);
-    });
-    function toggleLike(ele) {
-        ele.target.classList.toggle("fa-thumbs-down");
-    }
+
 
     getGroceries()
-    // forAlice()
+ addNum()
+    
 
     const createGroceryForm = document.querySelector("#create-grocery-form")
     const groceryContainer = document.querySelector("#grocery-container")
@@ -24,11 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sortGroceries()
     })
 
-    const addOne = document.querySelector('#fave-grocery')
+    const addOne = document.querySelector('#number')
 
     addOne.addEventListener('click', (e) => {
-        addone()
+        e.preventDefault()
+        addNum()
     });
+
+
 
 
     groceryContainer.addEventListener("click", (e) => { 
@@ -49,11 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             //grocery.data.forEach iterates through the array 
             grocery.data.forEach(grocery => {
                 let newGrocery = new Grocery(grocery, grocery.attributes)
-                //The data is the rendered into the div element
+                //The data is rendered into the div element
                 document.querySelector("#grocery-container").innerHTML += newGrocery.render()
+          
+                });
             })
-        })
-    }
+        }
+    
 
 // function grabs all the values for the inputs on the form
     function createFormHandler(e) {
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const marketId = parseInt(document.querySelector('#markets').value)
         const groceryItemInput = document.querySelector('#input-grocery-item').value
         const qtyInput = document.querySelector('#input-qty').value
-        const notesInput = document.querySelector('#input-notes').value
+        const notesInput = document.querySelector('#input-notes').value 
         postFetch(marketId, groceryItemInput, qtyInput, notesInput)
         clearValues()
     }
@@ -120,29 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
             getGroceries()
         })
 
-
-
     }
 
-// function forAlice(){
-//     // document.querySelector('#grocery-container').innerHTML = ''
-//     fetch(baseUrl)
-//     .then(response => response.json())
-//     .then(groceries => {
-//         const grocerylist = Grocery.forAlice(groceries.data)
-//         groceries.data.forEach(grocery => {
-//             let findGrocery = Grocery.findById(grocery.id)
-//             let newItem = new Grocery(grocery, grocery.attributes)
-//             document.querySelector('#grocery-container').innerHTML += newItem.render()
-//         })
-//     })
-    
-// }
 
-function addone(){
-    let faveItem = document.getElementById('thisone').innerHTML
-    faveItem++;
-    document.getElementById('thisone').innerHTML = faveItem;
+
+function addNum() {
+    let value = parseInt(document.getElementById('number').value, 2);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
 }
-
 
