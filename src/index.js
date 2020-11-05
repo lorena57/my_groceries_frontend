@@ -1,4 +1,5 @@
 const baseUrl = "http://localhost:3000/api/v1/groceries"
+
 document.addEventListener('DOMContentLoaded', () => {
     getGroceries()
     //addNum()
@@ -34,13 +35,14 @@ function getGroceries() {
             grocery.data.forEach(grocery => {
                 let newGrocery = new Grocery(grocery, grocery.attributes)
                 //The data is rendered into the div element
-                document.querySelector("#grocery-container").innerHTML += newGrocery.render()
+                // document.querySelector("#grocery-container").innerHTML += newGrocery.render()
+                document.querySelector('#grocery-container').appendChild(newGrocery.render())
                 console.log(newGrocery.render())
-                const addOne = document.querySelector('#number')
+                const addOne = document.querySelector(`#number-${newGrocery.id}`)
                 console.log(addOne)
                 addOne.addEventListener('click', (e) => {
                     //e.preventDefault()
-                    addNum()
+                    addNum(newGrocery.id)
                 });
             });
         })
@@ -65,7 +67,7 @@ function clearValues() {
 }
 //function post grocery object created and renders object
 function postFetch(market_id, groceryItem, qty, notes) {
-    debugger
+    // debugger
     const bodyData = { market_id, groceryItem, qty, notes }
     fetch(baseUrl, {
         method: "POST",
@@ -107,12 +109,13 @@ function deleteGrocery(id) {
             getGroceries()
         })
 }
-function addNum() {
+
+function addNum(id) {
     //debugger;
-    let value = parseInt(document.querySelector('#number').value, 2);
+    let value = parseInt(document.querySelector(`#number-${id}`).value, 2);
     console.log(value)
     value = isNaN(value) ? 0 : value;
     console.log(value)
     value++;
-    document.querySelector('#number').value = value;
+    document.querySelector(`#number-${id}`).value = value;
 }

@@ -12,21 +12,40 @@ class Grocery {
     }
 
     //How does name render id .name is not part of the class
-    render() {
-        return `
-        <div data-id=${this.id}>
-        <h3>${this.market.name}<h3>
-        <p>${this.groceryItem}</p>
-        <p>${this.qty}</p>
-        <p>${this.notes}</p>
-        <button id="delete-btn" data-id=${this.id}>delete</button>
-        <form data-id=${this.id}>
-            <span id="this-one">Importance: </span>
-            <input type="button" id="number" value="0" />
-        </form>
-        </div>
-        <br><br>`;
-    }
+    // render() {
+    //     return `
+    //     <div data-id=${this.id}>
+    //     <h3>${this.market.name}<h3>
+    //     <p>${this.groceryItem}</p>
+    //     <p>${this.qty}</p>
+    //     <p>${this.notes}</p>
+    //     <button id="delete-btn" data-id=${this.id}>delete</button>
+    //     <form data-id=${this.id}>
+    //         <span id="this-one">Importance: </span>
+    //         <input type="button" id='number-${this.id}' value="0" />
+    //     </form>
+    //     </div>
+    //     <br><br>`;
+    // }
+
+render() {
+	const element = document.createElement('div');
+	element.setAttribute('data-id', this.id);
+	element.innerHTML = (`
+			<h3>${this.market.name}</h3>
+		    <p>${this.groceryItem}</p>
+		    <p>${this.qty}</p>
+		    <p>${this.notes}</p>
+		    <button id="delete-btn" data-id=${this.id}>delete</button>
+		    <form data-id=${this.id}>
+		        <span id="this-one">Importance: </span>
+		        <input type="button" id="number-${this.id}" value="0" />
+		    </form>
+		
+    `);
+    console.log(element)
+    return element;
+}
 
 
 
