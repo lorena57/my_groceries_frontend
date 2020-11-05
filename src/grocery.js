@@ -2,7 +2,7 @@ console.log("Now I'm in grocery.js")
 
 class Grocery {
 
-    constructor(grocery, groceryAttributes){
+    constructor(grocery, groceryAttributes) {
         this.id = grocery.id
         this.groceryItem = groceryAttributes.groceryItem
         this.qty = groceryAttributes.qty
@@ -11,7 +11,7 @@ class Grocery {
         Grocery.all.push(this)
     }
 
-//How does name render id .name is not part of the class
+    //How does name render id .name is not part of the class
     render() {
         return `
         <div data-id=${this.id}>
@@ -20,13 +20,14 @@ class Grocery {
         <p>${this.qty}</p>
         <p>${this.notes}</p>
         <button id="delete-btn" data-id=${this.id}>delete</button>
-
+        <form data-id=${this.id}>
+            <span id="this-one">Importance: </span>
+            <input type="button" id="number" value="0" />
+        </form>
         </div>
-
         <br><br>`;
-
     }
-    
+
 
 
     //static method finds object by ID
