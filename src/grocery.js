@@ -43,12 +43,8 @@ render() {
 		    </form>
 		
     `);
-    console.log(element)
     return element;
 }
-
-
-
     //static method finds object by ID
     static findById(id) {
         return this.all.find(grocery => grocery.id == id)
@@ -62,10 +58,5 @@ render() {
     }
 
 }
-
-
-
-
-
 
 Grocery.all = [];

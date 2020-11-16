@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         sortGroceries()
     })
-    // const addOne = document.querySelector('#number')
-    // addOne.addEventListener('click', (e) => {
-    //     e.preventDefault()
-    //     addNum()
-    // });
+
+    const addOne = document.querySelector('#number')
+    addOne.addEventListener('click', (e) => {
+        e.preventDefault()
+        addNum()
+    });
+
     groceryContainer.addEventListener("click", (e) => {
         const groceryId = e.target.dataset.id
         if (e.target.id == 'delete-btn') {
@@ -37,9 +39,8 @@ function getGroceries() {
                 //The data is rendered into the div element
                 // document.querySelector("#grocery-container").innerHTML += newGrocery.render()
                 document.querySelector('#grocery-container').appendChild(newGrocery.render())
-                console.log(newGrocery.render())
                 const addOne = document.querySelector(`#number-${newGrocery.id}`)
-                console.log(addOne)
+                // console.log(addOne)
                 addOne.addEventListener('click', (e) => {
                     //e.preventDefault()
                     addNum(newGrocery.id)
@@ -58,6 +59,16 @@ function createFormHandler(e) {
     postFetch(marketId, groceryItemInput, qtyInput, notesInput)
     clearValues()
 }
+
+
+// function createFormHandler(e) {
+//     e.preventDefault()
+   
+//     let groceryData = Array.from(document.querySelectorAll('#create-grocery-form input')).reduce((acc, input) => ({...acc, [input.id]: input.value}),{});
+//     postFetch(groceryData)
+//     clearValues()
+// }
+
 //function clears the values once object is submitted
 function clearValues() {
     const marketId = document.querySelector('#markets').value = "";
@@ -67,7 +78,6 @@ function clearValues() {
 }
 //function post grocery object created and renders object
 function postFetch(market_id, groceryItem, qty, notes) {
-    // debugger
     const bodyData = { market_id, groceryItem, qty, notes }
     fetch(baseUrl, {
         method: "POST",
@@ -111,7 +121,6 @@ function deleteGrocery(id) {
 }
 
 function addNum(id) {
-    //debugger;
     let value = parseInt(document.querySelector(`#number-${id}`).value, 2);
     console.log(value)
     value = isNaN(value) ? 0 : value;
