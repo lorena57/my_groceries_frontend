@@ -37,11 +37,8 @@ function getGroceries() {
                 //The data is rendered into the div element
                 // document.querySelector("#grocery-container").innerHTML += newGrocery.render()
                 document.querySelector('#grocery-container').appendChild(newGrocery.render())
-                console.log(newGrocery.render())
                 const addOne = document.querySelector(`#number-${newGrocery.id}`)
-                console.log(addOne)
                 addOne.addEventListener('click', (e) => {
-                    //e.preventDefault()
                     addNum(newGrocery.id)
                 });
             });
@@ -67,7 +64,6 @@ function clearValues() {
 }
 //function post grocery object created and renders object
 function postFetch(market_id, groceryItem, qty, notes) {
-    // debugger
     const bodyData = { market_id, groceryItem, qty, notes }
     fetch(baseUrl, {
         method: "POST",
@@ -79,7 +75,8 @@ function postFetch(market_id, groceryItem, qty, notes) {
             console.log(grocery)
             const groceryData = grocery.data
             let newGrocery = new Grocery(groceryData, groceryData.attributes)
-            document.querySelector("#grocery-container").innerHTML += newGrocery.render()
+            console.log(newGrocery.render())
+            document.querySelector("#grocery-container").appendChild(newGrocery.render())
         })
 }
 //function iterates through object ID and grocery attributes and renders
@@ -92,7 +89,7 @@ function sortGroceries() {
             groceries.data.forEach(grocery => {
                 let findGrocery = Grocery.findById(grocery.id)
                 let newItem = new Grocery(grocery, grocery.attributes)
-                document.querySelector('#grocery-container').innerHTML += newItem.render()
+                document.querySelector('#grocery-container').appendChild(newItem.render())
             })
         })
 }
@@ -112,7 +109,7 @@ function deleteGrocery(id) {
 
 function addNum(id) {
     //debugger;
-    let value = parseInt(document.querySelector(`#number-${id}`).value, 2);
+    let value = parseInt(document.querySelector(`#number-${id}`).value);
     console.log(value)
     value = isNaN(value) ? 0 : value;
     console.log(value)
