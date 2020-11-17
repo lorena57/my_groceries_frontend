@@ -33,14 +33,12 @@ function getGroceries() {
             document.querySelector("#grocery-container").innerHTML = ""
             //grocery.data.forEach iterates through the array 
             grocery.data.forEach(grocery => {
-                let newGrocery = new Grocery(grocery, grocery.attributes)
+                const newGrocery = new Grocery(grocery, grocery.attributes)
                 //The data is rendered into the div element
                 // document.querySelector("#grocery-container").innerHTML += newGrocery.render()
                 document.querySelector('#grocery-container').appendChild(newGrocery.render())
                 const addOne = document.querySelector(`#number-${newGrocery.id}`)
-                addOne.addEventListener('click', (e) => {
-                    addNum(newGrocery.id)
-                });
+                addOne.addEventListener('click', (e) => addNum(newGrocery.id));
             });
         })
 }
@@ -101,15 +99,13 @@ function deleteGrocery(id) {
     })
         .then(response => response.json())
         .then(grocery => {
-            // console.log(grocery)
             Grocery.all = []
             getGroceries()
         })
 }
 
 function addNum(id) {
-    //debugger;
-    let value = parseInt(document.querySelector(`#number-${id}`).value);
+    let value = parseInt(document.querySelector(`#number-${id}`).value,2);
     console.log(value)
     value = isNaN(value) ? 0 : value;
     console.log(value)
