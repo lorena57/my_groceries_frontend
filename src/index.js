@@ -2,7 +2,8 @@ const baseUrl = "http://localhost:3000/api/v1/groceries"
 
 document.addEventListener('DOMContentLoaded', () => {
     getGroceries()
-    //addNum()
+    // addNum()
+
     const createGroceryForm = document.querySelector("#create-grocery-form")
     const groceryContainer = document.querySelector("#grocery-container")
     createGroceryForm.addEventListener("submit", (e) => createFormHandler(e))
@@ -12,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sortGroceries()
     })
 
-    const addOne = document.querySelector('#number')
-    addOne.addEventListener('click', (e) => {
-        e.preventDefault()
-        addNum()
-    });
+    // const addOne = document.querySelector('#number')
+    // addOne.addEventListener('click', (e) => {
+    //     e.preventDefault()
+    //     addNum()
+    // });
 
     groceryContainer.addEventListener("click", (e) => {
         const groceryId = e.target.dataset.id
@@ -42,7 +43,7 @@ function getGroceries() {
                 const addOne = document.querySelector(`#number-${newGrocery.id}`)
                 // console.log(addOne)
                 addOne.addEventListener('click', (e) => {
-                    //e.preventDefault()
+                    e.preventDefault()
                     addNum(newGrocery.id)
                 });
             });
