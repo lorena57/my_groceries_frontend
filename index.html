@@ -17,12 +17,17 @@
     <script type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
+    <h1>Shopping List</h1>
     <div class="form-container">
       <form id="create-grocery-form">
         <h3>Create a grocery list</h3>
 
-        <select name="markets" id="markets">
-          <option value="">--Please choose a market--</option>
+        <select
+          class="form-select markets"
+          id="markets"
+          aria-label="Default select example"
+        >
+          <option selected>Open this select menu</option>
           <option value="1">SafeWay</option>
           <option value="2">Whole Foods</option>
           <option value="3">New Seasons</option>
@@ -40,14 +45,44 @@
           rows="10"
           placeholder="Notes"
         ></textarea>
+
         <br /><br />
 
         <input
+          class="btn btn-primary btn-sm"
           type="submit"
           id="create-button"
           name="submit"
           value="Create a grocery list"
         />
+
+        <div class="mb-2">
+          <label for="groceryItem" class="form-label">Grocery Item</label>
+          <input
+            type="text"
+            class="form-control"
+            id="groceryItem"
+            placeholder="What to buy?"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="groceryQty" class="form-label">Qty</label>
+          <input
+            type="text"
+            class="form-control"
+            id="groceryQty"
+            placeholder="How many?"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="notes" class="form-label">Notes</label>
+          <textarea
+            class="form-control"
+            id="notes"
+            rows="3"
+            placeholder="Notes?"
+          ></textarea>
+        </div>
 
         <!-- span an input for add num function -->
       </form>
