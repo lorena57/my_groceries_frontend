@@ -33,20 +33,33 @@
           <option value="3">New Seasons</option>
         </select>
 
-        <br /><br />
-        <input type="text" id="input-grocery-item" placeholder="Grocery Item" />
-        <br /><br />
-        <input type="text" id="input-qty" placeholder="Qty" />
-        <br /><br />
-        <textarea
-          name="notes"
-          id="input-notes"
-          cols="30"
-          rows="10"
-          placeholder="Notes"
-        ></textarea>
-
-        <br /><br />
+        <div class="mb-2">
+          <label for="groceryItem" class="form-label">Grocery Item</label>
+          <input
+            type="text"
+            class="form-control"
+            id="input-grocery-item"
+            placeholder="What to buy?"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="groceryQty" class="form-label">Qty</label>
+          <input
+            type="text"
+            class="form-control"
+            id="input-qty"
+            placeholder="How many?"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="notes" class="form-label">Notes</label>
+          <textarea
+            class="form-control"
+            id="input-notes"
+            rows="3"
+            placeholder="Notes?"
+          ></textarea>
+        </div>
 
         <input
           class="btn btn-primary btn-sm"
@@ -56,43 +69,8 @@
           value="Create a grocery list"
         />
 
-        <!-- <div class="mb-2">
-          <label for="groceryItem" class="form-label">Grocery Item</label>
-          <input
-            type="text"
-            class="form-control"
-            id="groceryItem"
-            placeholder="What to buy?"
-          />
-        </div>
-        <div class="mb-2">
-          <label for="groceryQty" class="form-label">Qty</label>
-          <input
-            type="text"
-            class="form-control"
-            id="groceryQty"
-            placeholder="How many?"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="notes" class="form-label">Notes</label>
-          <textarea
-            class="form-control"
-            id="notes"
-            rows="3"
-            placeholder="Notes?"
-          ></textarea>
-        </div> -->
-
         <!-- span an input for add num function -->
       </form>
-
-      <!-- <form >
-            <input type="text" class="number" value="0">
-            <input type="button" class="display-number" value="Increment Value">
-
-         
-        </form> -->
     </div>
 
     <br />
