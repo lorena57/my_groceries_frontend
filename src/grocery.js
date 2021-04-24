@@ -22,32 +22,15 @@ class Grocery {
           <p class="card-text">Notes: ${this.notes}</p>
           
           <button type="button" id="delete-btn" data-id=${this.id} class="btn btn-sm btn-danger">Delete</button>
-          <form data-id=${this.id}>
-              <span id="this-one">Importance: </span>
-              <input type="button" id="number-${this.id}" value="0" />
-          </form>
+
         </div>
       </div>
-
-
-		
     `;
     return element;
   }
   //static method finds object by ID
   static findById(id) {
     return this.all.find((grocery) => grocery.id == id);
-  }
-
-  //static method to sort grocery object
-  static sortGroceries(groceries) {
-    const sortedItems = groceries.sort((first, second) =>
-      first.attributes.groceryItem.toUpperCase() >
-      second.attributes.groceryItem.toUpperCase()
-        ? 1
-        : -1
-    );
-    return sortedItems;
   }
 }
 
