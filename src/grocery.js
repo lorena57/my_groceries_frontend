@@ -14,15 +14,22 @@ class Grocery {
     const element = document.createElement('div');
     element.setAttribute('data-id', this.id);
     element.innerHTML = `
-			<h3>${this.market.name}</h3>
-		    <p>${this.groceryItem}</p>
-		    <p>${this.qty}</p>
-		    <p>${this.notes}</p>
-		    <button id="delete-btn" data-id=${this.id}>delete</button>
-		    <form data-id=${this.id}>
-		        <span id="this-one">Importance: </span>
-		        <input type="button" id="number-${this.id}" value="0" />
-		    </form>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${this.market.name}</h5>
+          <p class="card-text">Qty: ${this.qty}</p>
+          <p class="card-text">Item: ${this.groceryItem}</p>
+          <p class="card-text">Notes: ${this.notes}</p>
+          
+          <button type="button" id="delete-btn" data-id=${this.id} class="btn btn-sm btn-danger">Delete</button>
+          <form data-id=${this.id}>
+              <span id="this-one">Importance: </span>
+              <input type="button" id="number-${this.id}" value="0" />
+          </form>
+        </div>
+      </div>
+
+
 		
     `;
     return element;
