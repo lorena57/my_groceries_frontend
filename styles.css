@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 30px 20px;
-  background-color: #f8f9f9 !important;
+  /* background-color: #f8f9f9 !important; */
   font-family: 'Indie Flower' !important;
+  padding: 20px;
+  background: url('./img/daria-volkova-pBdbqG3tJGQ-unsplash.jpg') no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
 h1 {
   text-align: center;
   text-decoration: underline;
+  color: #fff;
 }
 
-img {
-  width: 50%;
-  height: 20%;
-  opacity: 0.3;
-  z-index: -2;
+h3 {
+  color: #fff;
 }
