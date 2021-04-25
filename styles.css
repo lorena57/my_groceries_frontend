@@ -6,7 +6,7 @@ body {
   background: url('./img/daria-volkova-pBdbqG3tJGQ-unsplash.jpg') no-repeat
     center center fixed;
   -webkit-background-size: cover;
-  -moz-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
 }
