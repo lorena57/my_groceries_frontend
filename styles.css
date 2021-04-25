@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
+  padding: 30px 20px;
   background-color: #f8f9f9 !important;
   font-family: 'Indie Flower' !important;
 }
 
 h1 {
   text-align: center;
+  text-decoration: underline;
+}
+
+img {
+  width: 50%;
+  height: 20%;
+  opacity: 0.3;
+  z-index: -2;
 }

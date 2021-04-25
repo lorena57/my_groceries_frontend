@@ -17,8 +17,11 @@
     <script type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
-    <h1>Shopping List</h1>
-    <div class="form-container">
+    <div>
+      <h1>Shopping List</h1>
+    </div>
+
+    <div class="form-container d-flex justify-content-center">
       <form id="create-grocery-form">
         <h3>Create a grocery list</h3>
 
@@ -76,6 +79,6 @@
     <br />
 
     <!-- grocery-container will render all my data from my fetch -->
-    <div id="grocery-container"></div>
+    <div class="row row-cols-1 row-cols-md-3" id="grocery-container"></div>
   </body>
 </html>

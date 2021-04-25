@@ -14,7 +14,8 @@ class Grocery {
     const element = document.createElement('div');
     element.setAttribute('data-id', this.id);
     element.innerHTML = `
-      <div class="card" style="width: 18rem;">
+ 
+      <div class="card m-4 " style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${this.market.name}</h5>
           <p class="card-text">Qty: ${this.qty}</p>
@@ -25,6 +26,7 @@ class Grocery {
 
         </div>
       </div>
+   
     `;
     return element;
   }
