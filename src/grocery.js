@@ -17,7 +17,7 @@ class Grocery {
  
       <div class="card m-4 " style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">${this.market.name}</h5>
+          <h2 class="card-title text-center">${this.market.name}</h2>
           <p class="card-text">Qty: ${this.qty}</p>
           <p class="card-text">Item: ${this.groceryItem}</p>
           <p class="card-text">Notes: ${this.notes}</p>
