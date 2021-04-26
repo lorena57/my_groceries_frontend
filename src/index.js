@@ -24,8 +24,6 @@ function getGroceries() {
       document.querySelector('#grocery-container').innerHTML = '';
       grocery.data.forEach((grocery) => {
         let newGrocery = new Grocery(grocery, grocery.attributes);
-        //The data is rendered into the div element
-        // document.querySelector("#grocery-container").innerHTML += newGrocery.render()
         document
           .querySelector('#grocery-container')
           .appendChild(newGrocery.render());
@@ -34,12 +32,9 @@ function getGroceries() {
 }
 // function grabs all the values of the inputs on the form
 function createFormHandler(e) {
-  // console.log(new FormData(e.target))
   e.preventDefault();
   const form = document.querySelector('#create-grocery-form');
-
   const bodyData = {};
-
   [...form.elements]
     .filter((element) => {
       return element.type !== 'submit';
@@ -56,7 +51,6 @@ function createFormHandler(e) {
   console.log(bodyData);
   postFetch(bodyData);
   clearFunction();
-  // clearValues();
 }
 
 function clearFunction() {
