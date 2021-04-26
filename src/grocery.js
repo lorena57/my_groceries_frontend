@@ -37,3 +37,7 @@ class Grocery {
 }
 
 Grocery.all = [];
+
+//  ${this.groceryItem.map((item) => {
+//           <p>Item: ${item}</p>;
+//         })}

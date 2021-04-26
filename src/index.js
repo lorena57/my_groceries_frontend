@@ -36,27 +36,46 @@ function getGroceries() {
 function createFormHandler(e) {
   // console.log(new FormData(e.target))
   e.preventDefault();
-  const marketId = parseInt(document.querySelector('#markets').value);
-  const groceryItemInput = document.querySelector('#input-grocery-item').value;
-  const qtyInput = document.querySelector('#input-qty').value;
-  const notesInput = document.querySelector('#input-notes').value;
-  postFetch(marketId, groceryItemInput, qtyInput, notesInput);
-  clearValues();
+  const form = document.querySelector('#create-grocery-form');
+
+  const bodyData = {};
+  // const marketId = parseInt(document.querySelector('#markets').value);
+  // const groceryItemInput = document.querySelector('#input-grocery-item').value;
+  // const qtyInput = document.querySelector('#input-qty').value;
+  // const notesInput = document.querySelector('#input-notes').value;
+  // postFetch(marketId, groceryItemInput, qtyInput, notesInput);
+
+  [...form.elements]
+    .filter((element) => {
+      return element.type !== 'submit';
+    })
+    .forEach((formElement) => {
+      const name = formElement.name;
+      if (name.endsWith('[]')) {
+        if (!bodyData.hasOwnProperty(name)) bodyData[name] = [];
+        bodyData[name].push(formElement.value);
+      } else {
+        bodyData[name] = formElement.value;
+      }
+    });
+  console.log(bodyData);
+  postFetch(bodyData);
+  // clearValues();
 }
 
 //function clears the values once object is submitted
-function clearValues() {
-  const marketId = (document.querySelector('#markets').value = '');
-  const groceryItemInput = (document.querySelector(
-    '#input-grocery-item'
-  ).value = '');
-  const qtyInput = (document.querySelector('#input-qty').value = '');
-  const notesInput = (document.querySelector('#input-notes').value = '');
-}
+// function clearValues() {
+//   const marketId = (document.querySelector('#markets').value = '');
+//   const groceryItemInput = (document.querySelector(
+//     '#input-grocery-item'
+//   ).value = '');
+//   const qtyInput = (document.querySelector('#input-qty').value = '');
+//   const notesInput = (document.querySelector('#input-notes').value = '');
+// }
 
 //function post grocery object created and renders object
-function postFetch(market_id, groceryItem, qty, notes) {
-  const bodyData = { market_id, groceryItem, qty, notes };
+function postFetch(bodyData = {}) {
+  // const bodyData = { market_id, groceryItem, qty, notes };
   fetch(baseUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
