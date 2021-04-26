@@ -32,18 +32,13 @@ function getGroceries() {
       });
     });
 }
-// function grabs all the values for the inputs on the form
+// function grabs all the values of the inputs on the form
 function createFormHandler(e) {
   // console.log(new FormData(e.target))
   e.preventDefault();
   const form = document.querySelector('#create-grocery-form');
 
   const bodyData = {};
-  // const marketId = parseInt(document.querySelector('#markets').value);
-  // const groceryItemInput = document.querySelector('#input-grocery-item').value;
-  // const qtyInput = document.querySelector('#input-qty').value;
-  // const notesInput = document.querySelector('#input-notes').value;
-  // postFetch(marketId, groceryItemInput, qtyInput, notesInput);
 
   [...form.elements]
     .filter((element) => {
@@ -60,18 +55,13 @@ function createFormHandler(e) {
     });
   console.log(bodyData);
   postFetch(bodyData);
+  clearFunction();
   // clearValues();
 }
 
-//function clears the values once object is submitted
-// function clearValues() {
-//   const marketId = (document.querySelector('#markets').value = '');
-//   const groceryItemInput = (document.querySelector(
-//     '#input-grocery-item'
-//   ).value = '');
-//   const qtyInput = (document.querySelector('#input-qty').value = '');
-//   const notesInput = (document.querySelector('#input-notes').value = '');
-// }
+function clearFunction() {
+  document.getElementById('create-grocery-form').reset();
+}
 
 //function post grocery object created and renders object
 function postFetch(bodyData = {}) {
