@@ -59,7 +59,6 @@ function clearFunction() {
 
 //function post grocery object created and renders object
 function postFetch(bodyData = {}) {
-  // const bodyData = { market_id, groceryItem, qty, notes };
   fetch(baseUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
