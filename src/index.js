@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1/groceries';
+const baseUrl = 'https://groceriesbackendjs.herokuapp.com/api/v1/groceries';
 
 document.addEventListener('DOMContentLoaded', () => {
   getGroceries();
